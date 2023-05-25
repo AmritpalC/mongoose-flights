@@ -9,15 +9,15 @@ async function index(req,res, next) {
     });
 }
 
-// console.log(Flights.find())
+// ? GET flights/new
 
-
-// function index(req, res, next) {
-//     res.render('flights/index', {
-//         title: 'Search Flights'
-//     });
-// }
+async function newFlight(req, res, next) {
+    res.render('flights/new', {
+        title: 'Add Flight'
+    })
+}
 
 module.exports = {
-    index
+    index, 
+    new: newFlight
 }

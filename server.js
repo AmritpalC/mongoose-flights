@@ -4,13 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-require('dotenv').config();
-require('./config/database');
 
 const indexRouter = require('./routes/index');
 const flightsRouter = require('./routes/flights');
 
 const app = express();
+
+require('dotenv').config();
+require('./config/database');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

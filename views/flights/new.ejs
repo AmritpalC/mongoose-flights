@@ -6,7 +6,7 @@
 
     <!-- flightNo -->
     <label>Flight Number</label>
-    <input type="text">
+    <input type="number" name="flightNo">
 
     <!-- Airport -->
     <label>Airport</label>
@@ -21,18 +21,20 @@
     <!-- Airline -->
     <label>Airline</label>
     <select name="airline">
-        <option value="Anerican">American</option>
+        <option value="American">American</option>
         <option value="Southwest">Southwest</option>
         <option value="United">United</option>
     </select>
 
     <!-- departs -->
     <label>Departure Date</label>
-    <input type="datetime-local">
+    <input type="datetime-local" name="departs">
 
     <!-- Submit new flight -->
     <input type="submit" value="Add Flight">
 
+      <!-- Error -->
+  <small class="red"><%= errorMessage %></small>
 </form>
 
 <%- include('../partials/footer') %>

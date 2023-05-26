@@ -54,27 +54,9 @@ async function create(req, res, next) {
     }
 }
 
-// ! PUT /flights/:id/destinations
-// async function updateDestination(req, res, next) {
-//     try {
-//         const { id } = req.params
-//         const { airport, arrival } = req.body
-//         const flight = await Flight.findById(id)
-//         const destination = { airport, arrival }
-//         flight.destinations.push(destination)
-//         await flight.save()
-//         res.redirect(`flights/${id}`)
-
-//     } catch {
-//         console.log('ERROR MESSAGE ->', err.message)
-//         res.render('flights/show', { title: 'Flight Information', errorMessage: err.message })
-//     }
-// }
-
 module.exports = {
     index, 
     new: newFlight,
     create,
-    show,
-    // ! updateDestination
+    show
 }

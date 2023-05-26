@@ -28,9 +28,6 @@ app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
 app.use('/', destinationsRouter);
 
-// ! PUT route for updating destination
-// app.put('flights/:id/destinations', updateDestination);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

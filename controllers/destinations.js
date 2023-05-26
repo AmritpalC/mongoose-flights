@@ -4,8 +4,8 @@ async function create(req, res, next) {
     const { id } = req.params
     try {
         const flight = await Flight.findById(id)
-        const destination = { airport, arrival }
         const { airport, arrival } = req.body
+        const destination = { airport, arrival }
 
         //push destinations info into flight
         flight.destinations.push(destination)

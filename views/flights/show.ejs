@@ -1,20 +1,60 @@
 <%- include('../partials/header') %>
 
 <h3>Flight details below:</h3>
+<table>
+    <thead class="showTableTitles">
+        <th>Flight Number</th>
+        <th>Airport</th>
+        <th>Airline</th>
+        <th>Departure Date and Time</th>
+    </thead>
+    <tbody>
+        <td><%= flight.flightNo %></td>
+        <td><%= flight.airport %></td>
+        <td><%= flight.airline %></td>
+        <td><%= flight.departs %></td>
+    </tbody>
+</table>
 
-<ul>
+        <!-- <% flight.destinations.forEach(function(destinations) { %>
+            <tr>
+                <td><%= destinations.airport %></td>
+                <td><%= destinations.arrival %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table> -->
+
+<!-- <ul>
     <li>Flight Number: <%= flight.flightNo %></li>
     <li>Airport: <%= flight.airport %></li>
     <li>Airline: <%= flight.airline %></li>
     <li>Departure Date and Time: <%= flight.departs %></li>
-    <% flight.destinations.forEach(function(destinations) { %>
-        <li>Destination Airport: <%= destinations.airport %></li>
-        <li>Arrival Date and Time: <%= destinations.arrival %></li>
-    <% }) %>
-</ul>
+</ul> -->
 
-<h4>Add Destination</h4>
-<form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+<h3>Flight Destinations:</h3>
+<table>
+    <thead class="destinationTableTitles">
+        <th>Destination Airport</th>
+        <th>Arrival Date and Time</th>
+    </thead>
+    <tbody>
+        <% flight.destinations.forEach(function(destinations) { %>
+            <tr>
+                <td><%= destinations.airport %></td>
+                <td><%= destinations.arrival %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<!-- <% flight.destinations.forEach(function(destinations) { %>
+    <li>Destination Airport: <%= destinations.airport %></li>
+    <li>Arrival Date and Time: <%= destinations.arrival %></li>
+<% }) %> -->
+
+<h3>Add a Destination</h3>
+<form class="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
     <label>Destination Airport</label>
     <select name="airport">
         <option value="AUS">AUS</option>

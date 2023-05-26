@@ -11,4 +11,7 @@ router.get('/new', flightsCtrl.new);
 
 router.post('/', flightsCtrl.create);
 
+// ! not working
+// router.put('/flights/:id/destinations', flightsCtrl.update)
+
 module.exports = router;

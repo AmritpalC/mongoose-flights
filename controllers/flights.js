@@ -27,7 +27,14 @@ async function show(req, res, next) {
 
 // ? GET flights/new
 async function newFlight(req, res, next) {
-    res.render('flights/new', { title: 'Add Flight', errorMessage: '' })
+    const newFlight = new Flight();
+    // Obtain the default date
+    const dt = newFlight.departs;
+    // Format the date for the value attribute of the input
+    let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
+    departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
+    res.render('flights/new', { departsDate, title: 'Add Flight', errorMessage: '' });
+    // res.render('flights/new', { title: 'Add Flight', errorMessage: '' })
 }
 
 // ? POST / flights
@@ -47,9 +54,27 @@ async function create(req, res, next) {
     }
 }
 
+// ! PUT /flights/:id/destinations
+// async function updateDestination(req, res, next) {
+//     try {
+//         const { id } = req.params
+//         const { airport, arrival } = req.body
+//         const flight = await Flight.findById(id)
+//         const destination = { airport, arrival }
+//         flight.destinations.push(destination)
+//         await flight.save()
+//         res.redirect(`flights/${id}`)
+
+//     } catch {
+//         console.log('ERROR MESSAGE ->', err.message)
+//         res.render('flights/show', { title: 'Flight Information', errorMessage: err.message })
+//     }
+// }
+
 module.exports = {
     index, 
     new: newFlight,
     create,
-    show
+    show,
+    // ! updateDestination
 }

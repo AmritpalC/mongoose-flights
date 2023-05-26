@@ -6,3 +6,25 @@ body {
 a {
   color: #00B7FF;
 }
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: black;
+  color: cyan;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid grey;
+  background-color: rgb(220, 220, 220);
+}
+
+label, #addFlightBtn {
+  padding-left: 20px;
+}
+

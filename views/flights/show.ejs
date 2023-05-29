@@ -16,22 +16,6 @@
     </tbody>
 </table>
 
-        <!-- <% flight.destinations.forEach(function(destinations) { %>
-            <tr>
-                <td><%= destinations.airport %></td>
-                <td><%= destinations.arrival %></td>
-            </tr>
-        <% }) %>
-    </tbody>
-</table> -->
-
-<!-- <ul>
-    <li>Flight Number: <%= flight.flightNo %></li>
-    <li>Airport: <%= flight.airport %></li>
-    <li>Airline: <%= flight.airline %></li>
-    <li>Departure Date and Time: <%= flight.departs %></li>
-</ul> -->
-
 <h3>Flight Destinations:</h3>
 <table>
     <thead class="destinationTableTitles">
@@ -47,11 +31,6 @@
         <% }) %>
     </tbody>
 </table>
-
-<!-- <% flight.destinations.forEach(function(destinations) { %>
-    <li>Destination Airport: <%= destinations.airport %></li>
-    <li>Arrival Date and Time: <%= destinations.arrival %></li>
-<% }) %> -->
 
 <h3>Add a Destination</h3>
 <form class="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">

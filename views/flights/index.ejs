@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <% flights.forEach(function(flight){ %>
-            <tr>
+            <tr class="<%= flight.departs < Date.now() ? 'red' : '' %>">
                 <td><%= flight.flightNo %></td>
                 <td><%= flight.airport %></td>
                 <td><%= flight.airline %></td>

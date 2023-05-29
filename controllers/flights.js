@@ -2,7 +2,7 @@ const Flight = require('../models/flight')
 
 async function index(req, res, next) {
     const allFlights = await Flight.find({})
-    // Using UTC timestamp to sort dates as departs alone wasn't working as intended 
+    // Using UTC timestamp (.getTime()) to sort dates as departs alone wasn't working as intended 
     allFlights.sort((a, b) => a.departs.getTime() - b.departs.getTime())
     console.log(allFlights[0])
 

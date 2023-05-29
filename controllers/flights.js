@@ -1,4 +1,5 @@
 const Flight = require('../models/flight')
+const Ticket = require('../models/ticket')
 
 async function index(req, res, next) {
     const allFlights = await Flight.find({})
@@ -12,20 +13,76 @@ async function index(req, res, next) {
     });
 }
 
+// // ? GET flights/:id
+// async function show(req, res, next) {
+//     try {
+//         const { id } = req.params
+//         const flight = await Flight.findById(id)
+
+//         Flight.findById(req.params.id, function(err, flight) {
+//             Ticket.find({flight: flight._id}, function(err, tickets) {
+//                 res.render('flights/show', {
+//                     title: 'Flight Information',
+//                     flight,
+//                     tickets
+//                 })
+//             })
+//         })
+//     } catch (err) {
+//         console.log('ERROR MESSAGE ->', err.message)
+//         next()
+//     }
+// }
+
 // ? GET flights/:id
 async function show(req, res, next) {
+    const { id } = req.params
     try {
-        const { id } = req.params
-        const flight = await Flight.findById(id)
-        res.render('flights/show', {
-            title: 'Flight Information',
-            flight
-        })
+        const flight = await Flight.findById(id).exec()
+        const tickets = await Ticket.find({ flight: flight._id }).exec()
+                       
+            res.render('flights/show', {
+                title: 'Flight Information',
+                flight,
+                tickets
+            })
+            // })    deleted ) on next line
     } catch (err) {
         console.log('ERROR MESSAGE ->', err.message)
-        next()
+        next(err)
     }
 }
+
+// // ? GET flights/:id
+// async function show(req, res, next) {
+//     const { id } = req.params
+//     try {
+//         const flight = await Flight.findById(id).exec();
+
+//         // Flight.findById(id, function(err, flight) {
+//         //     if (err) {
+//         //         console.log('ERROR MESSAGE ->', err.message)
+//         //         return next(err)
+//         //     }
+
+//             Ticket.find({flight: flight._id}, function(err, tickets) {
+//                 if (err) {
+//                     console.log('ERROR MESSAGE ->', err.message)
+//                     return next(err)
+//                 }
+                
+//                 res.render('flights/show', {
+//                     title: 'Flight Information',
+//                     flight,
+//                     tickets
+//                 })
+//             })
+//     } catch (err) {
+//         console.log('ERROR MESSAGE ->', err.message)
+//         next()
+//     }
+// }
+
 
 // ? GET flights/new
 async function newFlight(req, res, next) {

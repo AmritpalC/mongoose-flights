@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<p>Before adding, please ensure that the flight is not in the following list:</p>
+<section id="badge-container">
+    <!-- filtering over tickets array and only showing tickets which correspond to that flight -->
+    <% tickets.filter(ticket => ticket.flight.toString() === flight._id.toString()).forEach(function(t) { %>
+        <article class="badge"><%= t.seat %></article>
+    <% }) %>
+</section>
+
+<form action="/flights/<%= flight._id %>/tickets" method="POST">
+    <!-- seat -->
+    <label>Seat - must be from A1 to F99</label>
+    <input name="seat" required pattern="[A-F][1-9]\d?">
+
+    <!-- Price -->
+    <label>Price (£)</label>
+    <input type="number" name="price">
+
+    <!-- Submit new flight -->
+    <span id="addTicketBtn"><input type="submit" value="Add Ticket"></span>
+</form>
+
+<%- include('../partials/footer') %>

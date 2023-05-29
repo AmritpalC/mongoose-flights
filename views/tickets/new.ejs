@@ -1,12 +1,17 @@
 <%- include('../partials/header') %>
 
 <p>Before adding, please ensure that the flight is not in the following list:</p>
+
 <section id="badge-container">
     <!-- filtering over tickets array and only showing tickets which correspond to that flight -->
     <% tickets.filter(ticket => ticket.flight.toString() === flight._id.toString()).forEach(function(t) { %>
         <article class="badge"><%= t.seat %></article>
     <% }) %>
 </section>
+
+<% if (duplicateSeat) { %>
+    <p><%= duplicateSeat %></p>
+<% } %>
 
 <form action="/flights/<%= flight._id %>/tickets" method="POST">
     <!-- seat -->

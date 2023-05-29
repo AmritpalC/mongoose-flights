@@ -13,27 +13,6 @@ async function index(req, res, next) {
     });
 }
 
-// // ? GET flights/:id
-// async function show(req, res, next) {
-//     try {
-//         const { id } = req.params
-//         const flight = await Flight.findById(id)
-
-//         Flight.findById(req.params.id, function(err, flight) {
-//             Ticket.find({flight: flight._id}, function(err, tickets) {
-//                 res.render('flights/show', {
-//                     title: 'Flight Information',
-//                     flight,
-//                     tickets
-//                 })
-//             })
-//         })
-//     } catch (err) {
-//         console.log('ERROR MESSAGE ->', err.message)
-//         next()
-//     }
-// }
-
 // ? GET flights/:id
 async function show(req, res, next) {
     const { id } = req.params
@@ -52,37 +31,6 @@ async function show(req, res, next) {
         next(err)
     }
 }
-
-// // ? GET flights/:id
-// async function show(req, res, next) {
-//     const { id } = req.params
-//     try {
-//         const flight = await Flight.findById(id).exec();
-
-//         // Flight.findById(id, function(err, flight) {
-//         //     if (err) {
-//         //         console.log('ERROR MESSAGE ->', err.message)
-//         //         return next(err)
-//         //     }
-
-//             Ticket.find({flight: flight._id}, function(err, tickets) {
-//                 if (err) {
-//                     console.log('ERROR MESSAGE ->', err.message)
-//                     return next(err)
-//                 }
-                
-//                 res.render('flights/show', {
-//                     title: 'Flight Information',
-//                     flight,
-//                     tickets
-//                 })
-//             })
-//     } catch (err) {
-//         console.log('ERROR MESSAGE ->', err.message)
-//         next()
-//     }
-// }
-
 
 // ? GET flights/new
 async function newFlight(req, res, next) {
